@@ -35,9 +35,13 @@ def add(d, i, j):
     """
     You need to implement this method. See  the handout for its specs.
     """
+    # if ((i <= ((pow(10, d)/(2))-1)) and (i >= 0)) and ((j <= ((pow(10, d)/(2))-1)) and (i >= 0)):
     i_encode = decode(d, i)
     j_encode = decode(d, j)
-    return encode(d, (i_encode + j_encode))
+    if ((i_encode + j_encode) > pow(10, d)):
+        return (pow(10, d)-(i_encode + j_encode) - 1)
+    else:
+        return encode(d, (i_encode + j_encode))
 
 
 def multiply(d, i, j):

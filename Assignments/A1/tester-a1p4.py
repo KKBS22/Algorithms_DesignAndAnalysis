@@ -160,6 +160,18 @@ def main():
     else:
         print('Passed')
 
+    print('Test 13:', end=' ')
+    failure = False
+    ret = multiply(4, 2136, 2217)
+
+    if ((not ret) or (ret != 5512)):
+        failure = True
+
+    if failure:
+        print('Failed')
+    else:
+        print('Passed')
+
 
 if __name__ == '__main__':
     main()
