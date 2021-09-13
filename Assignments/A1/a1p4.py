@@ -38,8 +38,8 @@ def add(d, i, j):
     # if ((i <= ((pow(10, d)/(2))-1)) and (i >= 0)) and ((j <= ((pow(10, d)/(2))-1)) and (i >= 0)):
     i_encode = decode(d, i)
     j_encode = decode(d, j)
-    if ((i_encode + j_encode) > pow(10, d)):
-        return (pow(10, d)-(i_encode + j_encode) - 1)
+    if ((i_encode + j_encode) > (pow(10, d)-1)):
+        return ((pow(10, d)-1)-(i_encode + j_encode) - 1)
     else:
         return encode(d, (i_encode + j_encode))
 
