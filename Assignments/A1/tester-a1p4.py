@@ -172,6 +172,18 @@ def main():
     else:
         print('Passed')
 
+    print('Test 14:', end=' ')
+    failure = False
+    ret = multiply(2, 18, 18)
+
+    if ((not ret) or (ret != 24)):
+        failure = True
+
+    if failure:
+        print('Failed')
+    else:
+        print('Passed')
+
 
 if __name__ == '__main__':
     main()
