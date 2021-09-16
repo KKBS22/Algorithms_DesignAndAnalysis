@@ -2,7 +2,7 @@
 
 import sys
 import random
-from a2p4_new import buildbst
+from a2p4 import buildbst
 
 """
 Some tests.
@@ -50,7 +50,6 @@ def main():
     r = random.randint(1000, 2000)
     for i in range(r):
         s.add(random.randint(1, 1000000))
-    print(sorted(s))
     t = buildbst(s)
     success = checkBst(s, t)
     if success:
