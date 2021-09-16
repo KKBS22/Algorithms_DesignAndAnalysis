@@ -1,4 +1,16 @@
+"""
+ECE606, F'21, Assignment 2, Problem 4
+Skeleton solution file.
+"""
+
 import math
+
+"""
+You are not allowed to import anything else. You are, however,
+allowed to use any built-in Python 3 language feature and
+data structures you like. You are allowed to define any subroutines
+you like to structure your code.
+"""
 
 
 class Node:
@@ -97,50 +109,14 @@ class BinarySearchTree():
                 return right_height+1
 
 
-# def printLevelOrder(root):
-#     h = height(root)
-#     for i in range(1, h+1):
-#         printCurrentLevel(root, i)
-
-
-# # Print nodes at a current level
-# def printCurrentLevel(root, level):
-#     if root is None:
-#         return
-#     if level == 1:
-#         print(root.data, end=" ")
-#     elif level > 1:
-#         printCurrentLevel(root.left, level-1)
-#         printCurrentLevel(root.right, level-1)
-
-
-# def height(node):
-#     if node is None:
-#         return 0
-#     else:
-#         # Compute the height of each subtree
-#         lheight = height(node.left)
-#         rheight = height(node.right)
-
-#         # Use the larger one
-#         if lheight > rheight:
-#             return lheight+1
-#         else:
-#             return rheight+1
-
-
-def main():
-    data_List = [10, 20, 30, 40, 50, 60, 70,
-                 80, 90, 100, 110, 120, 130, 140, 150]
-    bstTree = BinarySearchTree(data_List)
+def buildbst(s):
+    """
+    You need to implement this method. See the handout for its specs.
+    """
+    sorted_set = sorted(s)
+    data_as_list = list(sorted_set)
+    bstTree = BinarySearchTree(data_as_list)
     root_node_data = bstTree.create_tree()
     #final_encode = bstTree.level_order_traversal(root_node_data)
     bstTree.level_order_traversal(root_node_data)
-    print(bstTree.bst_list)
-
-    c = 1+1
-    pass
-
-
-if __name__ == '__main__':
-    main()
+    return bstTree.bst_list
