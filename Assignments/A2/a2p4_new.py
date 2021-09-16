@@ -33,8 +33,8 @@ class BinarySearchTree():
 
     def create_tree(self, method):
         if (method == 1):
-            root_node_pos = self.find_root(2)[0]
-            root_node = Node(self.find_root(2)[1])
+            root_node_pos = self.find_root(2, self.initial_list)[0]
+            root_node = Node(self.find_root(2, self.initial_list)[1])
 
             left_list_tree = self.initial_list[:root_node_pos]
             right_list_tree = self.initial_list[root_node_pos+1:]
@@ -45,7 +45,7 @@ class BinarySearchTree():
             root_node.LNode = left_tree_node
             root_node.RNode = right_tree_node
         elif(method == 2):
-            root_node = self.inorder_array(self.initial_list)
+            root_node = self.inorder_array(2, self.initial_list)
         return root_node
 
     def create_left_right_tree(self, treeData):
@@ -60,18 +60,19 @@ class BinarySearchTree():
         root.RNode = self.create_left_right_tree(treeData[mid_val+1:])
         return root
 
-    def find_root(self, method):
-        max_nodes = pow(2, self.height+1)-1
-        length_array = len(self.initial_list)
+    def find_root(self, method, subArray):
+        int_height = math.floor(math.log2(len(subArray)))
+        max_nodes = pow(2, int_height+1)-1
+        length_array = len(subArray)
         if (method == 1):
             if (max_nodes == length_array):
                 position_root = int((length_array-1)/2)
-                return [position_root, self.initial_list[position_root]]
+                return [position_root, subArray[position_root]]
             else:
-                node_for_lst_ht = pow(2, self.height)-(max_nodes-length_array)
+                node_for_lst_ht = pow(2, int_height)-(max_nodes-length_array)
                 nodes_needed = 0
-                for a in range(1, self.height+1):
-                    if a == self.height:
+                for a in range(1, int_height+1):
+                    if a == int_height:
                         nodes_needed = nodes_needed + node_for_lst_ht
                     else:
                         nodes_needed = nodes_needed + (pow(2, a)/2)
@@ -81,24 +82,24 @@ class BinarySearchTree():
         elif (method == 2):
             if (max_nodes == length_array):
                 position_root = int((length_array-1)/2)
-                return [position_root, self.initial_list[position_root]]
+                return [position_root, subArray[position_root]]
             else:
                 less_by = max_nodes - length_array
-                nodes_in_ht = pow(2, self.height)
+                nodes_in_ht = pow(2, int_height)
                 lst_needed = nodes_in_ht - less_by
-                left_needed = int(pow(2, self.height)/2)
-                if (lst_needed > left_needed):
+                left_needed = int(pow(2, int_height)/2)
+                if (lst_needed >= left_needed):
                     nodes_needed_last = left_needed
                 else:
-                    nodes_needed_last = left_needed - lst_needed
+                    nodes_needed_last = lst_needed
                 nodes_needed = 0
-                for a in range(1, self.height+1):
-                    if a == self.height:
+                for a in range(1, int_height+1):
+                    if a == int_height:
                         nodes_needed = nodes_needed + nodes_needed_last
                     else:
                         nodes_needed = nodes_needed + (pow(2, a)/2)
                 nodes_needed = int(nodes_needed)
-                return [nodes_needed, self.initial_list[nodes_needed]]
+            return [nodes_needed, subArray[nodes_needed]]
 
     def level_order_traversal(self, rootNode):
         bst_list = []
@@ -133,21 +134,25 @@ class BinarySearchTree():
         else:
             left_height = self.find_height(node.LNode)
             right_height = self.find_height(node.RNode)
-
-            # Use the larger one
             if left_height > right_height:
                 return left_height+1
             else:
                 return right_height+1
 
-    def inorder_array(self, listEle):
+    def inorder_array(self, method, listEle):
         if not listEle:
             return None
-
-        mid = int((len(listEle)) / 2)
-        root = Node(listEle[mid])
-        root.LNode = self.inorder_array(listEle[:mid])
-        root.RNode = self.inorder_array(listEle[mid+1:])
+        if (method == 1):
+            mid = int((len(listEle)) / 2)
+            root = Node(listEle[mid])
+            root.LNode = self.inorder_array(1, listEle[:mid])
+            root.RNode = self.inorder_array(1, listEle[mid+1:])
+        elif (method == 2):
+            position = self.find_root(2, listEle)[0]
+            root = Node(listEle[position])
+            root.LNode = self.inorder_array(2, listEle[:position])
+            root.RNode = self.inorder_array(
+                2, listEle[position+1:])
         return root
         pass
 
@@ -158,11 +163,11 @@ def buildbst(s):
     """
     sorted_set = sorted(s)
     data_as_list = list(sorted_set)
-    bstTree = BinarySearchTree(data_as_list)
+    #bstTree = BinarySearchTree(data_as_list)
     bstTree_two = BinarySearchTree(data_as_list)
-    root_node_data = bstTree.create_tree(1)
+    #root_node_data = bstTree.create_tree(1)
     root_node_data_2 = bstTree_two.create_tree(2)
     #final_encode = bstTree.level_order_traversal(root_node_data)
-    bstTree.level_order_traversal(root_node_data)
+    # bstTree.level_order_traversal(root_node_data)
     bstTree_two.level_order_traversal(root_node_data_2)
     return bstTree_two.bst_list

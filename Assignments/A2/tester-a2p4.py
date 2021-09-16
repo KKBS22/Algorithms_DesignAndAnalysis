@@ -27,8 +27,8 @@ def main():
     print('Test 1:', end=' ')
     s = {10, 20, 30, 40, 50, 60, 70,
          80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190}
-    t = [120, 60, 160, 30, 90, 140, 180, 20, 50, 80,
-         110, 130, 150, 170, 190, 10, 40, 70, 100]
+    t = [120, 80, 160, 40, 100, 140, 180, 20, 60,
+         90, 110, 130, 150, 170, 190, 10, 30, 50, 70]
     success = checkBst(s, t)
     if success:
         print('Passed')
@@ -47,7 +47,7 @@ def main():
     print('Test 3:', end=' ')
     s = set()
     s.clear()
-    r = 19
+    r = random.randint(1000, 2000)
     for i in range(r):
         s.add(random.randint(1, 1000000))
     print(sorted(s))
