@@ -27,7 +27,6 @@ class BinarySearchTree():
     def __init__(self, dataList):
         self.initial_list = dataList
         self.bst_list = []
-        #value_test = math.floor(math.log2(self.initial_list))
         self.height = math.floor(math.log2(len(self.initial_list)))
         pass
 
@@ -102,7 +101,6 @@ class BinarySearchTree():
             return [nodes_needed, subArray[nodes_needed]]
 
     def level_order_traversal(self, rootNode):
-        bst_list = []
         height_val = self.find_height(rootNode)
         for i in range(1, height_val+1):
             #bst_list.append(self.data_at_level(rootNode, i))
@@ -117,7 +115,6 @@ class BinarySearchTree():
         self.Inorder(rootNode.RNode)
 
     def data_at_level(self, node, levelVal):
-        bst_list = []
         if node is None:
             return
         if levelVal == 1:
@@ -154,7 +151,6 @@ class BinarySearchTree():
             root.RNode = self.inorder_array(
                 2, listEle[position+1:])
         return root
-        pass
 
 
 def buildbst(s):
