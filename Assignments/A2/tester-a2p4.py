@@ -25,8 +25,9 @@ def checkBst(s, t):
 
 def main():
     print('Test 1:', end=' ')
-    s = {1, 2, 3, 4, 5, 6}
+    s = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
     t = buildbst(s)
+    print(t)
     success = checkBst(s, t)
     if success:
         print('Passed')

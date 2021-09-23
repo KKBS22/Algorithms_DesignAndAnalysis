@@ -59,6 +59,16 @@ class BinarySearchTree():
         root.RNode = self.create_left_right_tree(treeData[mid_val+1:])
         return root
 
+    """
+    find_root :  function to find the root in evey subarray
+        1. less_by : Variable the defines how many nodes the tree is less by to form a complete binary search tree
+        2. nodes_in_ht : Variable holds the maximum number of nodes in a given height
+        3. lst_needed : Variable holds the number of nodes needed in the last height for the given array
+        4. left_needed : Variable holds the number of nodes needed to complete the left part of last height to make sure there are no gaps
+        5. nodes_needed : Will be the variable the hold the number of nodes needed in a given subarray to construct a BST without gaps
+        Note :- The method 2 performs the correct needed functionality
+    """
+
     def find_root(self, method, subArray):
         int_height = math.floor(math.log2(len(subArray)))
         max_nodes = pow(2, int_height+1)-1
@@ -135,6 +145,10 @@ class BinarySearchTree():
                 return left_height+1
             else:
                 return right_height+1
+
+    """
+    1. Inorder Array : https://www.geeksforgeeks.org/construct-binary-tree-from-inorder-traversal/
+    """
 
     def inorder_array(self, method, listEle):
         if not listEle:
