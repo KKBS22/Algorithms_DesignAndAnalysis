@@ -1,5 +1,6 @@
 
 graph_set = [[2, 3, 4], [2, 3], [0, 1], [0, 1, 4], [0, 3]]
+spanning_tree = [[2, 3], [3], [0], [0, 1, 4], [3]]
 
 """
 Class to define a Node:
@@ -32,10 +33,44 @@ def generate_nodes(adjacencyList):
     return list_of_nodes
 
 
-def main():
-    another_st(graph_set, 2)
+# def main():
+#     #another_st(graph_set, 2)
+#     # edges_out = find_disconnected_edges(graph_set, spanning_tree)
+#     # count_add = 0
+#     # for a in range(len(spanning_tree)):
+#     #     if len(edges_out[a]) >= 1:
+#     #         count_add = count_add + 1
+#     #         if count_add == 1:
+#     #             spanning_tree[a].append(edges_out[a][0])
+#     #             spanning_tree[edges_out[a][0]].append(a)
+#     #             for node in spanning_tree[edges_out[a][0]]:
+#     #                 if node != a:
+#     #                     spanning_tree[edges_out[a][0]].remove(node)
+#     #                     spanning_tree[node].remove(edges_out[a][0])
+#     #         else:
+#     #             break
+#     # st_new = spanning_tree
+#     spanning_tree_prime = anotherst(graph_set, spanning_tree)
+#     print(spanning_tree_prime)
 
-    pass
+
+def anotherst(graphAdjList, initST):
+    edges_out = find_disconnected_edges(graphAdjList, initST)
+    count_add = 0
+    for a in range(len(initST)):
+        if len(edges_out[a]) >= 1:
+            count_add = count_add + 1
+            if count_add == 1:
+                initST[a].append(edges_out[a][0])
+                initST[edges_out[a][0]].append(a)
+                for node in initST[edges_out[a][0]]:
+                    if node != a:
+                        initST[edges_out[a][0]].remove(node)
+                        initST[node].remove(edges_out[a][0])
+            else:
+                break
+    st_new = initST
+    return st_new
 
 
 def another_st(graphAdjList, InitST):
@@ -74,11 +109,6 @@ def BFS(graphAdjList, startNode, method):
     return path_list
 
 
-"""
-Depth First Search CLRS
-"""
-
-
 def get_shortest_path(graphAdjList, source, destination):
     shortest_path = []
     while graphAdjList[destination].parent_node != -1:
@@ -88,9 +118,32 @@ def get_shortest_path(graphAdjList, source, destination):
     return shortest_path
 
 
+def find_disconnected_edges(graphAdjList, spanningTree):
+    edges_removed = []
+    for a in range(len(graphAdjList)):
+        rem_list = set(graphAdjList[a]).difference(set(spanningTree[a]))
+        edges_removed.append(list(rem_list))
+    return edges_removed
+
+
+# TODO
+"""
+Depth First Search for directed graph CLRS
+"""
+
+
 def DFS():
     pass
 
 
-if __name__ == '__main__':
-    main()
+"""
+Depth First Search for undirected graph CLRS
+"""
+
+
+def DFS_undirected():
+    pass
+
+
+# if __name__ == '__main__':
+#     main()
