@@ -33,25 +33,25 @@ def generate_nodes(adjacencyList):
     return list_of_nodes
 
 
-# def main():
-#     #another_st(graph_set, 2)
-#     # edges_out = find_disconnected_edges(graph_set, spanning_tree)
-#     # count_add = 0
-#     # for a in range(len(spanning_tree)):
-#     #     if len(edges_out[a]) >= 1:
-#     #         count_add = count_add + 1
-#     #         if count_add == 1:
-#     #             spanning_tree[a].append(edges_out[a][0])
-#     #             spanning_tree[edges_out[a][0]].append(a)
-#     #             for node in spanning_tree[edges_out[a][0]]:
-#     #                 if node != a:
-#     #                     spanning_tree[edges_out[a][0]].remove(node)
-#     #                     spanning_tree[node].remove(edges_out[a][0])
-#     #         else:
-#     #             break
-#     # st_new = spanning_tree
-#     spanning_tree_prime = anotherst(graph_set, spanning_tree)
-#     print(spanning_tree_prime)
+def main():
+    #another_st(graph_set, 2)
+    # edges_out = find_disconnected_edges(graph_set, spanning_tree)
+    # count_add = 0
+    # for a in range(len(spanning_tree)):
+    #     if len(edges_out[a]) >= 1:
+    #         count_add = count_add + 1
+    #         if count_add == 1:
+    #             spanning_tree[a].append(edges_out[a][0])
+    #             spanning_tree[edges_out[a][0]].append(a)
+    #             for node in spanning_tree[edges_out[a][0]]:
+    #                 if node != a:
+    #                     spanning_tree[edges_out[a][0]].remove(node)
+    #                     spanning_tree[node].remove(edges_out[a][0])
+    #         else:
+    #             break
+    # st_new = spanning_tree
+    spanning_tree_prime = anotherst(graph_set, spanning_tree)
+    print(spanning_tree_prime)
 
 
 def anotherst(graphAdjList, initST):
@@ -145,5 +145,5 @@ def DFS_undirected():
     pass
 
 
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    main()
