@@ -15,18 +15,18 @@ def anotherst(G, T):
     """
     You need to implement this method. See the handout for its specs.
     """
-    edges_out = find_disconnected_edges(G, T)
-    count_add = 0
-    for a in range(len(T)):
-        if len(edges_out[a]) >= 1:
-            count_add = count_add + 1
-            if count_add == 1:
-                T[a].append(edges_out[a][0])
-                T[edges_out[a][0]].append(a)
-                for node in T[edges_out[a][0]]:
-                    if node != a:
-                        T[edges_out[a][0]].remove(node)
-                        T[node].remove(edges_out[a][0])
+    edges_out = find_disconnected_edges(G, T)  # V+E
+    count_add = 0  # 1
+    for a in range(len(T)):  # V
+        if len(edges_out[a]) >= 1:  # V+1
+            count_add = count_add + 1  # V+1 #
+            if count_add == 1:  # 1
+                T[a].append(edges_out[a][0])  # 1
+                T[edges_out[a][0]].append(a)  # 1
+                for node in T[edges_out[a][0]]:  # 1 + n(where n is number of )
+                    if node != a:  # 1 + n(where n is number of )
+                        T[edges_out[a][0]].remove(node)  # 1
+                        T[node].remove(edges_out[a][0])  # 1
             else:
                 break
     st_new = T
