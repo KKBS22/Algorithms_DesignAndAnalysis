@@ -1,6 +1,8 @@
 
 graph_set = [[2, 3, 4], [2, 3], [0, 1], [0, 1, 4], [0, 3]]
 spanning_tree = [[2, 3], [3], [0], [0, 1, 4], [3]]
+directed_graph_set = [[1, 5], [4], [4, 3], [3], [5], [1]]
+
 
 """
 Class to define a Node:
@@ -19,6 +21,8 @@ class Node:
         self.depth = 0
         self.parent_node = -1
         self.node_list = []
+        self.start_time = 0
+        self.end_time = 0
         pass
 
 
@@ -132,8 +136,14 @@ Depth First Search for directed graph CLRS
 """
 
 
-def DFS():
-    pass
+# def DFS(graphAdjList):
+#     node_list = generate_nodes(graphAdjList)
+#     for aNode in
+#     pass
+
+
+# def DFS_visit(node):
+#     pass
 
 
 """
