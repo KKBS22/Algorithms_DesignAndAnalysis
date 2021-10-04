@@ -2,6 +2,9 @@
 
 import sys
 import random
+import timeit
+import numpy as np
+import matplotlib.pyplot as plt
 from a4p1 import anotherst
 
 """
@@ -10,6 +13,8 @@ Some tests.
 If you set this file to executable, and have the a4p1.py file in
 the same folder, then you should be able to run this.
 """
+
+time_list= []
 
 tests = [
     {
@@ -112,7 +117,11 @@ def main():
     # Make a copies of G and T
     H = graphCopy(G)
     S = graphCopy(T)
+    start = timeit.default_timer()
     Tprime = anotherst(G, T)
+    stop = timeit.default_timer()
+    print('Time 1: ', stop - start)  
+    time_list.append(stop - start)
     success = Tprime and (isTree(H, Tprime) and isDifferent(Tprime, S))
     if success:
         print('Passed')
@@ -125,7 +134,11 @@ def main():
     # Make a copies of G and T
     H = graphCopy(G)
     S = graphCopy(T)
+    start = timeit.default_timer()
     Tprime = anotherst(G, T)
+    stop = timeit.default_timer()
+    print('Time 2: ', stop - start) 
+    time_list.append(stop - start)
     success = Tprime and (isTree(H, Tprime) and isDifferent(Tprime, S))
     if success:
         print('Passed')
@@ -135,7 +148,11 @@ def main():
     print('Test 3:', end=' ')
     G = [[2, 3, 4], [2], [0, 1], [0], [0]]
     T = [[2, 3, 4], [2], [0, 1], [0], [0]]
+    start = timeit.default_timer()
     Tprime = anotherst(G, T)
+    stop = timeit.default_timer()
+    time_list.append(stop - start)
+    print('Time 3: ', stop - start) 
     success = (not Tprime)
     if success:
         print('Passed')
@@ -148,13 +165,21 @@ def main():
         T = test['T']
         H = graphCopy(G)
         S = graphCopy(T)
+        start = timeit.default_timer()
         Tprime = anotherst(G, T)
+        stop = timeit.default_timer()
+        time_list.append(stop - start)
+        print('Time '+str(c)+ ':', stop - start) 
         success = Tprime and (isTree(H, Tprime) and isDifferent(Tprime, S))
         if success:
             print('Passed')
         else:
             print('Failed')
         c += 1
+    x = [1,2,3,4,5,6,7,8 ]
+    y = time_list
+    plt.plot(x, y)
+    plt.show()
 
 
 if __name__ == '__main__':

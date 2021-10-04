@@ -15,6 +15,7 @@ def anotherst(G, T):
     """
     You need to implement this method. See the handout for its specs.
     """
+
     # T(n) = T(4V+E+17)
     edges_out = find_disconnected_edges(G, T)  # V+E
     if edges_out != None:  # 1
