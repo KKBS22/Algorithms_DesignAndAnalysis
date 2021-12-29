@@ -1,0 +1,12 @@
+[
+{
+  "directory": "D:/UniversityOfWaterloo/GitHUB_ProfessonalEXP/ECE606/Algorithms_DesignAndAnalysis/Assignments/build",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\G__~1.EXE   -g -o CMakeFiles\\merge.dir\\Sorting.cpp.obj -c D:\\UniversityOfWaterloo\\GitHUB_ProfessonalEXP\\ECE606\\Algorithms_DesignAndAnalysis\\Assignments\\A5CPP\\Sorting.cpp",
+  "file": "D:/UniversityOfWaterloo/GitHUB_ProfessonalEXP/ECE606/Algorithms_DesignAndAnalysis/Assignments/A5CPP/Sorting.cpp"
+},
+{
+  "directory": "D:/UniversityOfWaterloo/GitHUB_ProfessonalEXP/ECE606/Algorithms_DesignAndAnalysis/Assignments/build",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\G__~1.EXE   -g -o CMakeFiles\\main.dir\\main.cpp.obj -c D:\\UniversityOfWaterloo\\GitHUB_ProfessonalEXP\\ECE606\\Algorithms_DesignAndAnalysis\\Assignments\\A5CPP\\main.cpp",
+  "file": "D:/UniversityOfWaterloo/GitHUB_ProfessonalEXP/ECE606/Algorithms_DesignAndAnalysis/Assignments/A5CPP/main.cpp"
+}
+]

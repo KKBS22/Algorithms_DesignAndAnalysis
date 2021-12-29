@@ -20,6 +20,7 @@ def anotherst(G, T):
     edges_out = find_disconnected_edges(G, T)  # V+E
     if edges_out != None:  # 1
         count_add = 0  # 1
+        n = 0
         for a in range(len(T)-1, 0, -1):  # V
             if len(edges_out[a]) >= 1:  # V+1
                 count_add = count_add + 1  # V+1 #
@@ -28,9 +29,11 @@ def anotherst(G, T):
                     T[a].append(edges_out[a][0])  # 1
                     T[edges_out[a][0]].append(a)  # 1
                     for node in T[a]:  # 1 + n
+                        n = n + 1
                         if node != edgeAdd:  # 1 + n(where n is number of )
                             T[a].remove(node)  # 1
                             T[node].remove(a)  # 1
+                            print(n)
                 else:  # 1
                     break  # 1
         return T  # 1

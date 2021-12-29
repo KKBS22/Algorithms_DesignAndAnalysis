@@ -2,7 +2,7 @@
 graph_set = [[2, 3, 4], [2, 3], [0, 1], [0, 1, 4], [0, 3]]
 spanning_tree = [[2, 3], [3], [0], [0, 1, 4], [3]]
 directed_graph_set = [[1, 5], [4], [4, 3], [3], [5], [1]]
-
+test_DAG = [[2, 3], [2], [4, 5], [], [], [6], []]
 
 """
 Class to define a Node:
@@ -54,8 +54,11 @@ def main():
     #         else:
     #             break
     # st_new = spanning_tree
-    spanning_tree_prime = anotherst(graph_set, spanning_tree)
-    print(spanning_tree_prime)
+    #spanning_tree_prime = anotherst(graph_set, spanning_tree)
+    # print(spanning_tree_prime)
+    # DFS(directed_graph_set)
+    print_sinks(test_DAG)
+    # print_DFS_node(directed_graph_set)
 
 
 def anotherst(graphAdjList, initST):
@@ -134,16 +137,37 @@ def find_disconnected_edges(graphAdjList, spanningTree):
 """
 Depth First Search for directed graph CLRS
 """
+time = 0
 
 
-# def DFS(graphAdjList):
-#     node_list = generate_nodes(graphAdjList)
-#     for aNode in
-#     pass
+def DFS(graphAdjList):
+    node_list = generate_nodes(graphAdjList)
+    global time
+    time = 0
+    for aNode in node_list:
+        if aNode.color == 0:
+            DFS_visit(aNode)
+    print_DFS_node(node_list)
 
 
-# def DFS_visit(node):
-#     pass
+def DFS_visit(node):
+    node.color = 1
+    global time
+    time = time + 1
+    node.start_time = time
+    for aDiscover_Node in node.node_list:
+        if aDiscover_Node.color == 0:
+            aDiscover_Node.parent_node = node.data
+            DFS_visit(aDiscover_Node)
+    aDiscover_Node.color = 2
+    aDiscover_Node.end_time = time + 1
+
+
+def print_DFS_node(graphAdjList):
+    for aNode in graphAdjList:
+        print("Node : " + str(aNode.data) + "Start Time : " +
+              str(aNode.start_time) + " End Time : " + str(aNode.end_time))
+    pass
 
 
 """
@@ -152,6 +176,23 @@ Depth First Search for undirected graph CLRS
 
 
 def DFS_undirected():
+    pass
+
+
+"""
+Bellman-Ford algorithm for Single Source shortest path
+"""
+
+
+def Bellman_ford(graphAdjList, weight, source):
+    pass
+
+
+def print_sinks(graphAdjList):
+    for a in graphAdjList:
+        for b in a:
+            if len(graphAdjList[b]) == 0:
+                print(b)
     pass
 
 
